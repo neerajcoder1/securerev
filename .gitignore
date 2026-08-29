@@ -20,3 +20,13 @@ env/
 # IDEs
 .vscode/
 .idea/
+
+# Databases and Logs
+*.db
+*.sqlite
+*.sqlite3
+*.log
+
+# Env files
+.env*
+!.env.example
