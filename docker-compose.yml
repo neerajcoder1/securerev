@@ -1,0 +1,60 @@
+version: '3.8'
+
+services:
+  postgres:
+    image: postgres:15-alpine
+    container_name: securerev_postgres
+    restart: always
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER:-securerev}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-securerev_dev_pass}
+      POSTGRES_DB: ${POSTGRES_DB:-securerev}
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER:-securerev} -d ${POSTGRES_DB:-securerev}"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: securerev_backend
+    restart: always
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./backend:/app
+    environment:
+      - POSTGRES_USER=${POSTGRES_USER:-securerev}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD:-securerev_dev_pass}
+      - POSTGRES_DB=${POSTGRES_DB:-securerev}
+      - POSTGRES_HOST=postgres
+      - POSTGRES_PORT=5432
+    depends_on:
+      postgres:
+        condition: service_healthy
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    container_name: securerev_frontend
+    restart: always
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./frontend:/app
+      - /app/node_modules
+      - /app/.next
+    environment:
+      - NEXT_PUBLIC_API_URL=${NEXT_PUBLIC_API_URL:-http://localhost:8000/api/v1}
+    depends_on:
+      - backend
+
+volumes:
+  postgres_data:
