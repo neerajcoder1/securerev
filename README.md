@@ -1,4 +1,15 @@
 # SecureRev — Autonomous Secure Revenue Recovery Agent
+# Dashboard   <img width="1887" height="876" alt="image" src="https://github.com/user-attachments/assets/cd274662-73e1-48d0-bb4f-ad67116c9c57" />
+# Transactions  <img width="1860" height="874" alt="image" src="https://github.com/user-attachments/assets/32405555-14e6-463d-9ad6-ad4dad3d936a" />
+# Agent Activity  <img width="1863" height="876" alt="image" src="https://github.com/user-attachments/assets/8b1c528e-caaf-4cea-ae00-e074da3bc6f9" />
+# Test Payment / Simulation  <img width="1896" height="873" alt="image" src="https://github.com/user-attachments/assets/f289e882-b9f8-4713-a6e1-e921ab58a341" />
+# Mock Razorpay 
+
+<img width="941" height="436" alt="image" src="https://github.com/user-attachments/assets/a2ac9871-b60c-4909-a32a-854eab85ae5e" />
+<img width="936" height="431" alt="image" src="https://github.com/user-attachments/assets/f2f81cb4-9ee5-4719-981e-06488cf3bd3c" />
+<img width="1677" height="994" alt="image" src="https://github.com/user-attachments/assets/ea1563d1-2c6a-4057-a799-3fd170b47a18" />
+<img width="1558" height="832" alt="image" src="https://github.com/user-attachments/assets/a3ea8c87-8bd7-435f-a1d4-6e0805bbf760" />
+<img width="1636" height="892" alt="image" src="https://github.com/user-attachments/assets/2b7a5c66-cdad-45a3-aa69-5350d35a5ea2" />
 
 SecureRev is a B2B fintech platform designed to recover legitimate failed payments while preventing suspicious or high-risk transactions from being automatically recovered. Built for merchants using Razorpay, SecureRev combines Revenue Recovery Intelligence with Payment Security Intelligence through a deterministic Policy Engine and an AI Agent.
 
