@@ -1,3 +1,32 @@
+<div align="center">
+
+<img src="https://razorpay.com/assets/razorpay-glyph.svg" alt="Razorpay" width="70"/>
+
+# SecureRev — Autonomous Secure Revenue Recovery Agent
+
+**AI-Powered Revenue Recovery • Razorpay Test Mode • Bounded Autonomous Decisions**
+
+![Next.js](https://img.shields.io/badge/Next.js-000000?logo=next.js&logoColor=white)
+![React](https://img.shields.io/badge/React-20232A?logo=react&logoColor=61DAFB)
+![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?logo=typescript&logoColor=white)
+![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-06B6D4?logo=tailwindcss&logoColor=white)
+![FastAPI](https://img.shields.io/badge/FastAPI-009688?logo=fastapi&logoColor=white)
+![Python](https://img.shields.io/badge/Python-3776AB?logo=python&logoColor=white)
+![PostgreSQL](https://img.shields.io/badge/PostgreSQL-4169E1?logo=postgresql&logoColor=white)
+![Docker](https://img.shields.io/badge/Docker-2496ED?logo=docker&logoColor=white)
+
+**Payment Platform:** Razorpay Test Mode / Controlled Simulation
+
+</div>
+
+---
+
+
+SecureRev is a B2B fintech platform designed to help merchants recover legitimate failed payments while preventing unsafe or suspicious transactions from being automatically recovered.
+
+The system combines **Revenue Recovery Intelligence, Payment Security Intelligence, an AI Decision Agent, and a deterministic Policy Engine** to create a bounded autonomous recovery workflow.
+
+> **Disclaimer:** SecureRev is a hackathon prototype. It does not represent a production integration with Razorpay. Razorpay interactions are performed in Test Mode or through controlled simulations. No real customer money is processed by the prototype.
 # SecureRev — Autonomous Secure Revenue Recovery Agent
 
 SecureRev is a B2B fintech platform designed to help merchants recover legitimate failed payments while preventing unsafe or suspicious transactions from being automatically recovered.
