@@ -31,11 +31,24 @@ class Transaction(Base):
     device_id = Column(String)
     ip_address = Column(String)
     location = Column(String)
+    
+    # Razorpay Specifics
+    source = Column(String, default="SIMULATION")
+    razorpay_order_id = Column(String, nullable=True)
+    razorpay_payment_id = Column(String, nullable=True)
+    razorpay_signature_verified = Column(Boolean, default=False)
+    webhook_event_id = Column(String, nullable=True)
+    payment_provider = Column(String, default="Razorpay Test Mode")
+    external_reference = Column(String, nullable=True)
+
     created_at = Column(DateTime(timezone=True), server_default=func.now())
     
     risk_assessment = relationship("RiskAssessment", back_populates="transaction", uselist=False)
     recovery_assessment = relationship("RecoveryAssessment", back_populates="transaction", uselist=False)
     agent_decision = relationship("AgentDecision", back_populates="transaction", uselist=False)
+    policy_evaluation = relationship("PolicyEvaluation", back_populates="transaction", uselist=False)
+    recovery_action = relationship("RecoveryAction", back_populates="transaction", uselist=False)
+    audit_logs = relationship("AuditLog", back_populates="transaction", order_by="AuditLog.timestamp")
 
 class RiskAssessment(Base):
     __tablename__ = "risk_assessments"
@@ -68,6 +81,17 @@ class AgentDecision(Base):
     created_at = Column(DateTime(timezone=True), server_default=func.now())
     transaction = relationship("Transaction", back_populates="agent_decision")
 
+class PolicyEvaluation(Base):
+    __tablename__ = "policy_evaluations"
+    id = Column(Integer, primary_key=True, index=True)
+    transaction_id = Column(String, ForeignKey("transactions.id"))
+    policy_decision = Column(String)
+    policy_reason = Column(String)
+    approved_action = Column(String)
+    policy_rules = Column(JSON)
+    policy_evaluated_at = Column(DateTime(timezone=True), server_default=func.now())
+    transaction = relationship("Transaction", back_populates="policy_evaluation")
+
 class RecoveryAction(Base):
     __tablename__ = "recovery_actions"
     id = Column(Integer, primary_key=True, index=True)
@@ -76,6 +100,8 @@ class RecoveryAction(Base):
     status = Column(String)
     amount_recovered = Column(Float, default=0.0)
     executed_at = Column(DateTime(timezone=True), server_default=func.now())
+    policy_evaluation = Column(JSON)
+    transaction = relationship("Transaction", back_populates="recovery_action")
 
 class AuditLog(Base):
     __tablename__ = "audit_logs"
@@ -85,3 +111,4 @@ class AuditLog(Base):
     actor = Column(String)
     details = Column(JSON)
     timestamp = Column(DateTime(timezone=True), server_default=func.now())
+    transaction = relationship("Transaction", back_populates="audit_logs")

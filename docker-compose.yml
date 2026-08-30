@@ -29,6 +29,8 @@ services:
       - "8000:8000"
     volumes:
       - ./backend:/app
+    env_file:
+      - .env
     environment:
       - POSTGRES_USER=${POSTGRES_USER:-securerev}
       - POSTGRES_PASSWORD=${POSTGRES_PASSWORD:-securerev_dev_pass}
